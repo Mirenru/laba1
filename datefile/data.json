@@ -1,0 +1,25 @@
+{
+    "students":[
+        {
+        "name":"Matvey",
+        "courses":[
+            "Math",
+            "Programming"
+        ]
+        }
+    ],
+    "proffesors":[
+        {"name":"Andrew",
+        "courses":"Math"},
+        {"name":"Julia",
+        "courses":"Programming"}
+    ]
+
+
+
+
+
+
+
+
+}
