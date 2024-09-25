@@ -18,10 +18,10 @@ class Student:
         return ", ".join(self.courses)
     
     def set_name(self) -> None:
-        self.name = input("Введите имя студента")
+        self.name = input("Введите имя студента\n")
 
     def set_course(self) -> None:
-        self.courses = self.courses.append(input("Введите название курса"))
+        self.courses = self.courses.append(input("Введите название курса\n"))
 
     def to_dict(self) -> dict:
         return{
@@ -33,7 +33,7 @@ class Student:
 
 class Professor:
     def __init__(self, name):
-        self.name = name
+        self.name = name 
 
         self.teaching_courses = []
 
@@ -43,6 +43,18 @@ class Professor:
 
     def get_teaching_courses(self):
         return ", ".join(self.teaching_courses)
+    
+    def set_name(self) -> None:
+        self.name = input("Введите имя преподавателя.\n")
+
+    def set_teaching_courses(self) -> None:
+        self.teaching_courses = self.teaching_courses.append(input("Введите преподаваемые курсы.\n"))
+
+    def to_dict(self) -> dict:
+        return{
+            "name":self.name,
+            "courses":self.teaching_courses
+        }
 
 class Json:
     def load_json() -> dict:
