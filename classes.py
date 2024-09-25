@@ -1,5 +1,5 @@
 import json 
-import xml.etree.ElementTree as et
+
 
 class Student:
     def __init__(self, name):
@@ -11,8 +11,25 @@ class Student:
         self.courses.append(course)
         return f"{self.name} enrolled in {course}"
 
+    def get_name(self):
+        return f"Имя студента {self.name}."
+
     def get_courses(self):
         return ", ".join(self.courses)
+    
+    def set_name(self) -> None:
+        self.name = input("Введите имя студента")
+
+    def set_course(self) -> None:
+        self.courses = self.courses.append(input("Введите название курса"))
+
+    def to_dict(self) -> dict:
+        return{
+            "name":self.name,
+            "courses":self.courses
+        }
+    
+
 
 class Professor:
     def __init__(self, name):
@@ -47,11 +64,11 @@ class Json:
         print("\nДанные из JSON:")
     
         print("\nСтуденты:")
-        for movie in data['students']:
+        for students in data['students']:
             print(f"Имя: {students['name']}, Курсы обучения: {students['courses']} ")
 
         print("\nПреподаватели:")
-        for series in data['proffesors']:
+        for proffesors in data['proffesors']:
             print(f"Имя: {proffesors['title']}, Курсы преподавания: {proffesors['num_of_ep']}")
 
 
