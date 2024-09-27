@@ -12,7 +12,6 @@ while T == True:
     if choice == 1:
         #создание студента
         studen = cl.Student()
-        studen.printinf()
         studen.set_name()
         x=int(input("Введите количество курсов\n"))
         for i in range(x):
@@ -32,7 +31,24 @@ while T == True:
 
 
     elif choice == 2:
-        print()
+        profes = cl.Professor()
+        profes.set_name()
+        x=int(input("Введите количество курсов\n"))
+        for i in range(x):
+            print("Названия курсов пишутся на английском.\n")
+            profes.set_teaching_courses()
+        print("Вы создали объект с данными: ",profes.printinf())
+
+        while True:
+            xoj = int(input("Сохранить в JSON или в XML?\n1-JSON\n2-XML\n"))
+            if xoj == 1:    
+                data["proffesors"].append(profes.to_dict())
+                cl.Json.save_json(data)
+                break
+
+            else:
+                print("Неверный выбор")
+        break
     elif choice == 3:
         print()
     elif choice == 4:

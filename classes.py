@@ -5,11 +5,11 @@ import json
 
 class Student:
     name = ""
-    courses =[]
+    courses = []
     def __init__(self):
         self.name = ""
 
-        self.courses = [str]
+        self.courses = []
 
     def enroll(self, course):
         self.courses.append(course)
@@ -31,15 +31,17 @@ class Student:
     def to_dict(self) -> dict:
         return{
             "name":self.name,
-            "courses": str(self.courses)
+            "courses": self.courses
         }
     def printinf(self) -> str:
         return f"Студент {self.name}, курсы обучения:{self.courses}."
 
 
 class Professor:
-    def __init__(self, name):
-        self.name = name 
+    name = ""
+    teaching_courses = []
+    def __init__(self):
+        self.name = ""
 
         self.teaching_courses = []
 
@@ -54,13 +56,15 @@ class Professor:
         self.name = input("Введите имя преподавателя.\n")
 
     def set_teaching_courses(self) -> None:
-        self.teaching_courses = self.teaching_courses.append(input("Введите преподаваемые курсы.\n"))
+        self.teaching_courses.append(input("Введите преподаваемые курсы.\n"))
 
     def to_dict(self) -> dict:
         return{
             "name":self.name,
-            "courses":self.teaching_courses
+            "tcourses":self.teaching_courses
         }
+    def printinf(self) -> str:
+        return f"Преподаватель {self.name}, курсы которые он преподаёт:{self.teaching_courses}."
 
 class Json:
     def load_json() -> dict:
@@ -87,7 +91,7 @@ class Json:
 
         print("\nПреподаватели:")
         for proffesors in data['proffesors']:
-            print(f"Имя: {proffesors['name']}, Курсы преподавания: {proffesors['courses']}")
+            print(f"Имя: {proffesors['name']}, Курсы преподавания: {proffesors['tcourses']}")
 
 
     def data_to_dict(data) -> dict:

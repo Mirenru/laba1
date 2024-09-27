@@ -8,18 +8,42 @@
       ]
     },
     {
-      "name": "\u041d\u0438\u043a\u0438\u0442\u0430",
-      "courses": "[<class 'str'>, 'Math', 'Progr']"
+      "name": "Nikita",
+      "courses": [
+        "Math",
+        "History"
+      ]
+    },
+    {
+      "name": "Vladislav",
+      "courses": [
+        "Math",
+        "Phisics"
+      ]
     }
   ],
   "proffesors": [
     {
       "name": "Andrew",
-      "courses": "Math"
+      "tcourses": "Math"
     },
     {
       "name": "Julia",
-      "courses": "Programming"
+      "tcourses": "Programming"
+    },
+    {
+      "name": "Nikolay",
+      "tcourses": [
+        "History",
+        "Phisics"
+      ]
+    },
+    {
+      "name": "Kirill",
+      "tcourses": [
+        "Programming",
+        "OBZ"
+      ]
     }
   ]
 }
