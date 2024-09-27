@@ -36,7 +36,6 @@ class Student:
     def printinf(self) -> str:
         return f"Студент {self.name}, курсы обучения:{self.courses}."
 
-
 class Professor:
     name = ""
     teaching_courses = []
@@ -112,3 +111,7 @@ class Json:
                 return res
             else:
                 print("Неверный выбор")
+
+class XML:
+    def f():
+        print()

@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<data>
+    <students>
+        <student>
+            <name>
+                Matvey
+            </name>
+            <courses>
+                <course>
+                    Math
+                </course>
+                <course>
+                    Programming
+                </course>
+            </courses>
+        </student>
+    </students>
+
+    <professors>
+        <professor>
+            <name>
+                Andrew
+            </name>
+            <tcourses>
+                <tcourse>
+                    Math
+                </tcourse>
+            </tcourses>
+        </professor>
+    </professors>
+</data>
