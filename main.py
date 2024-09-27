@@ -1,14 +1,12 @@
 import classes as cl
 data = cl.Json.load_json()
-cl.Json.print_data(data)
-res = cl.Json.data_to_dict(data)
-print(res)
+data2 = cl.XML.load_from_xml()
 
 T = True
 while T == True:
-    choice = int(input("Здравствуйте, выберите действие: \n1-создать студента\n2-создать преподавателя\
-                       \n3-Считать JSON в массив\n4-Считать XML в массив\n5-Вывести JSON\n6-Вывести XML\n\
-                       7-Выйти из программы\n"))
+    choice = int(input("Здравствуйте, выберите действие: \n 1-создать студента\n 2-создать преподавателя\
+                       \n 3-Считать JSON в массив\n 4-Считать XML в массив\n 5-Вывести JSON\n 6-Вывести XML\
+                        \n 7-Выйти из программы\n"))
     if choice == 1:
         #создание студента
         studen = cl.Student()
@@ -24,10 +22,14 @@ while T == True:
                 data["students"].append(studen.to_dict())
                 cl.Json.save_json(data)
                 break
-
+            elif xoj == 2:
+                data2['students'].append(studen.to_dict())
+                cl.XML.save_to_xml(data2)
+                print()
+                break
             else:
                 print("Неверный выбор")
-        break
+        continue
 
 
     elif choice == 2:
@@ -45,19 +47,31 @@ while T == True:
                 data["proffesors"].append(profes.to_dict())
                 cl.Json.save_json(data)
                 break
-
+            elif xoj == 2:
+                data2['professors'].append(profes.to_dict())
+                cl.XML.save_to_xml(data2)
+                print()
+                break
             else:
                 print("Неверный выбор")
-        break
+        continue
     elif choice == 3:
-        print()
+
+        res = cl.Json.data_to_dict(data)
+        print(res)
+        continue
     elif choice == 4:
-        print()
+        res = cl.XML.data_to_dict(data2)
+        print(res)
+        continue
     elif choice == 5:
-        print()
+        cl.Json.print_data(data)
+        continue
     elif choice == 6:
-        print
+        cl.XML.print_data(data2)
+        continue
     elif choice == 7:
         T = False
+        print("Выход")
     else: 
         print("Неверный выбор")

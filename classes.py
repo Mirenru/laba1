@@ -1,5 +1,5 @@
 import json 
-
+import xml.etree.ElementTree as et
 
 
 
@@ -113,5 +113,107 @@ class Json:
                 print("Неверный выбор")
 
 class XML:
-    def f():
-        print()
+
+    # Функция для красивых отступов 
+    def indent(elem, level = 0) -> None:
+        i = "\n" + level * "  "
+        if len(elem):
+            if not elem.text or not elem.text.strip():
+                elem.text = i + "  "
+            if not elem.tail or not elem.tail.strip():
+                elem.tail = i
+            for subelem in elem:
+                XML.indent(subelem, level + 1)
+            if not subelem.tail or not subelem.tail.strip():
+                subelem.tail = i
+        else:
+            if level and (not elem.tail or not elem.tail.strip()):
+                elem.tail = i
+        pass
+
+    # Функция сохранения информации в xml
+    def save_to_xml(data) -> None:
+        root = et.Element('data')
+
+        students = et.SubElement(root, 'students')
+        for student in data['students']:
+            student_element = et.SubElement(students, 'student')
+            for key, value in student.items():
+                child = et.SubElement(student_element, key)
+                child.text = str(value)  
+
+        professors = et.SubElement(root, 'professors')
+        for professor in data['professors']:
+            professor_element = et.SubElement(professors, 'professor')
+            for key, value in professor.items():
+                child = et.SubElement(professor_element, key)
+                child.text = str(value)  
+
+        # Добавляем отступы для красивого форматирования
+        XML.indent(root)
+
+        # Создаем дерево XML и записываем его в файл
+        tree = et.ElementTree(root)
+        tree.write("data.xml", encoding='utf-8', xml_declaration=True)
+
+        print(f"Данные успешно сохранены в файл '{"data.xml"}'")
+        pass
+
+    def add_professors(data, professors):
+        data['professors'].append(professors.to_dict())
+
+    # Функция чтения информации из xml
+    def load_from_xml() -> dict:
+        try:
+            tree = et.parse("data.xml")
+            root = tree.getroot()
+        except FileExistsError:
+            return {"students" : [], "professors" : []}
+        
+        data = {"students" : [], "professors" : []}
+
+        for student in root.find("students"):
+            student_data = {}
+            for child in student:
+                student_data[child.tag] = child.text
+            data["students"].append(student_data)
+
+        for serial in root.find("professors"):
+            serial_data = {}
+            for child in serial:
+                serial_data[child.tag] = child.text
+            data["professors"].append(serial_data)
+
+        return data
+    
+    def print_data(data):
+        print("\nДанные из XML:")
+
+        print("\nСтуденты:")
+        for student in data['students']:
+            print(f"Имя: {student['name']}, Курсы: {student['courses']}")
+
+        print("\nПреподаватели:")
+        for professor in data['professors']:
+            print(f"Имя: {professor['name']}, преподаваемые курсы: {professor['tcourses']}")
+        
+        pass
+
+    def data_to_dict(data) -> dict:
+        while True:
+            choice = int(input("Что записать в массив?\n1-Студенты\n2-Преподаватели\n"))
+            if choice == 1:
+                res = []
+                for student in data['students']:
+                    res.append(student)
+                print("Данные успешно сохранены в массив \n")
+                break
+            elif choice == 2:
+                res = []
+                for professor in data['professors']:
+                    res.append(professor)
+                print("Данные успешно сохранены в массив \n")
+                break
+            else:
+                print("Неверный выбор")
+        return res
