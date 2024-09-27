@@ -1,11 +1,15 @@
 import json 
 
 
-class Student:
-    def __init__(self, name):
-        self.name = name
 
-        self.courses = []
+
+class Student:
+    name = ""
+    courses =[]
+    def __init__(self):
+        self.name = ""
+
+        self.courses = [str]
 
     def enroll(self, course):
         self.courses.append(course)
@@ -21,14 +25,16 @@ class Student:
         self.name = input("Введите имя студента\n")
 
     def set_course(self) -> None:
-        self.courses = self.courses.append(input("Введите название курса\n"))
+        s  = input("Введите название курса\n")
+        self.courses.append((s))
 
     def to_dict(self) -> dict:
         return{
             "name":self.name,
-            "courses":self.courses
+            "courses": str(self.courses)
         }
-    
+    def printinf(self) -> str:
+        return f"Студент {self.name}, курсы обучения:{self.courses}."
 
 
 class Professor:
@@ -67,7 +73,7 @@ class Json:
 
     def save_json(data) -> None:
         with open("data.json", 'w', encoding='utf-8') as f:
-            json.dump(data, f, indent=4)
+            json.dump(data, f, indent=2)
             print("Данные успешно сохранены")
         pass
 
@@ -81,7 +87,7 @@ class Json:
 
         print("\nПреподаватели:")
         for proffesors in data['proffesors']:
-            print(f"Имя: {proffesors['title']}, Курсы преподавания: {proffesors['num_of_ep']}")
+            print(f"Имя: {proffesors['name']}, Курсы преподавания: {proffesors['courses']}")
 
 
     def data_to_dict(data) -> dict:

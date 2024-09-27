@@ -1,6 +1,6 @@
 import classes as cl
 data = cl.Json.load_json()
-
+cl.Json.print_data(data)
 res = cl.Json.data_to_dict(data)
 print(res)
 
@@ -11,9 +11,26 @@ while T == True:
                        7-Выйти из программы\n"))
     if choice == 1:
         #создание студента
-        student = cl.Student()
+        studen = cl.Student()
+        studen.printinf()
+        studen.set_name()
+        x=int(input("Введите количество курсов\n"))
+        for i in range(x):
+            studen.set_course()
+        print("Вы создали объект с данными: ",studen.printinf())
 
-        print()
+        while True:
+            xoj = int(input("Сохранить в JSON или в XML?\n1-JSON\n2-XML\n"))
+            if xoj == 1:    
+                data["students"].append(studen.to_dict())
+                cl.Json.save_json(data)
+                break
+
+            else:
+                print("Неверный выбор")
+        break
+
+
     elif choice == 2:
         print()
     elif choice == 3:

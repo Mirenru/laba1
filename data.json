@@ -1,25 +1,25 @@
 {
-    "students":[
-        {
-        "name":"Matvey",
-        "courses":[
-            "Math",
-            "Programming"
-        ]
-        }
-    ],
-    "proffesors":[
-        {"name":"Andrew",
-        "courses":"Math"},
-        {"name":"Julia",
-        "courses":"Programming"}
-    ]
-
-
-
-
-
-
-
-
+  "students": [
+    {
+      "name": "Matvey",
+      "courses": [
+        "Math",
+        "Programming"
+      ]
+    },
+    {
+      "name": "\u041d\u0438\u043a\u0438\u0442\u0430",
+      "courses": "[<class 'str'>, 'Math', 'Progr']"
+    }
+  ],
+  "proffesors": [
+    {
+      "name": "Andrew",
+      "courses": "Math"
+    },
+    {
+      "name": "Julia",
+      "courses": "Programming"
+    }
+  ]
 }
