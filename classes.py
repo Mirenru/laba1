@@ -22,7 +22,8 @@ class Student:
         return ", ".join(self.courses)
     
     def set_name(self) -> None:
-        self.name = input("Введите имя студента\n")
+        
+        self.name = Error.no_number(self.name)
 
     def set_course(self) -> None:
         s  = input("Введите название курса\n")
@@ -52,7 +53,8 @@ class Professor:
         return ", ".join(self.teaching_courses)
     
     def set_name(self) -> None:
-        self.name = input("Введите имя преподавателя.\n")
+      
+        self.name = Error.no_number(self.name)
 
     def set_teaching_courses(self) -> None:
         self.teaching_courses.append(input("Введите преподаваемые курсы.\n"))
@@ -217,3 +219,17 @@ class XML:
             else:
                 print("Неверный выбор")
         return res
+
+class Error():
+    def no_number(name):
+        x = True
+        while x==True:
+            try:
+                name = input("Введите имя")
+                if  name.isdigit():
+                    raise ValueError
+                x = False 
+                return name
+                    
+            except ValueError : 
+                print("Введите имя без цифр")
