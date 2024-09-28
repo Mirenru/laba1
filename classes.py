@@ -1,8 +1,6 @@
 import json 
 import xml.etree.ElementTree as et
 
-
-
 class Student:
     name = ""
     courses = []
@@ -34,6 +32,7 @@ class Student:
             "name":self.name,
             "courses": self.courses
         }
+   
     def printinf(self) -> str:
         return f"Студент {self.name}, курсы обучения:{self.courses}."
 
@@ -116,7 +115,7 @@ class Json:
 
 class XML:
 
-    # Функция для красивых отступов 
+
     def indent(elem, level = 0) -> None:
         i = "\n" + level * "  "
         if len(elem):
@@ -133,7 +132,6 @@ class XML:
                 elem.tail = i
         pass
 
-    # Функция сохранения информации в xml
     def save_to_xml(data) -> None:
         root = et.Element('data')
 
@@ -151,10 +149,8 @@ class XML:
                 child = et.SubElement(professor_element, key)
                 child.text = str(value)  
 
-        # Добавляем отступы для красивого форматирования
         XML.indent(root)
 
-        # Создаем дерево XML и записываем его в файл
         tree = et.ElementTree(root)
         tree.write("data.xml", encoding='utf-8', xml_declaration=True)
 
@@ -164,7 +160,6 @@ class XML:
     def add_professors(data, professors):
         data['professors'].append(professors.to_dict())
 
-    # Функция чтения информации из xml
     def load_from_xml() -> dict:
         try:
             tree = et.parse("data.xml")
