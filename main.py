@@ -17,12 +17,12 @@ while T == True:
         print("Вы создали объект с данными: ",studen.printinf())
 
         while True:
-            xoj = int(input("Сохранить в JSON или в XML?\n1-JSON\n2-XML\n"))
-            if xoj == 1:    
+            kuda = int(input("Сохранить в JSON или в XML?\n1-JSON\n2-XML\n"))
+            if kuda == 1:    
                 data["students"].append(studen.to_dict())
                 cl.Json.save_json(data)
                 break
-            elif xoj == 2:
+            elif kuda == 2:
                 data2['students'].append(studen.to_dict())
                 cl.XML.save_to_xml(data2)
                 print()
@@ -42,12 +42,12 @@ while T == True:
         print("Вы создали объект с данными: ",profes.printinf())
 
         while True:
-            xoj = int(input("Сохранить в JSON или в XML?\n1-JSON\n2-XML\n"))
-            if xoj == 1:    
+            kuda = int(input("Сохранить в JSON или в XML?\n1-JSON\n2-XML\n"))
+            if kuda == 1:    
                 data["proffesors"].append(profes.to_dict())
                 cl.Json.save_json(data)
                 break
-            elif xoj == 2:
+            elif kuda == 2:
                 data2['professors'].append(profes.to_dict())
                 cl.XML.save_to_xml(data2)
                 print()
